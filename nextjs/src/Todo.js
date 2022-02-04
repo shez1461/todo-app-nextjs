@@ -17,7 +17,8 @@ export default function Todo({ todo, toggleTodo }) {
         type="checkbox"
         checked={todo.complete} 
         onChange={handleTodoClick}
-        sx={{ '& .MuiSvgIcon-root': { fontSize: 24 } }}
+        sx={{ '& .MuiSvgIcon-root': { fontSize: 20 } }}
+        color="success"
       />
       <TextField 
         sx={{ width: '100%' }}

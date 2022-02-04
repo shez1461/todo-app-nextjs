@@ -92,7 +92,7 @@ function App() {
             inputRef={todoNameRef}
           />
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-          <IconButton onClick={handleAddTodo} color="primary" sx={{ p: '10px' }} aria-label="directions">
+          <IconButton onClick={handleAddTodo} color="success" sx={{ p: '10px' }} aria-label="directions">
             <AddIcon />
           </IconButton>
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
