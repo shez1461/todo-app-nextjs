@@ -88,7 +88,6 @@ function App() {
             inputProps={{ 'aria-label': 'Enter text' }}
             inputProps={{ minLength: 2, maxLength: 256 }}
             type="text"
-            //ref={todoNameRef}
             fullWidth
             inputRef={todoNameRef}
           />
@@ -109,7 +108,6 @@ function App() {
         <TodoList 
           sx={{
             '& > :not(style)': { mt: 2, my: 2, m: 2, width: '100%' },
-            width: 450,
             maxWidth: '100%',
           }}
           todos={todos}
