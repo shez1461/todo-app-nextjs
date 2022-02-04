@@ -1,66 +1,35 @@
-# Tech Test
+## [ToDo App Tech Test](https://github.com/shez1461) TODO App Tech Test
+Inspired & Reffered by various demos online and YouTube tutorials.
 
-Front-End Tech Test
+## Live App Demo
+[Open Live Demo](https://shez.app)
 
-# Introduction
+## Features
+**Task Module**
+- Create Task
+- Edit Task
+- Delete Task
+- Mark as Completed
 
-The test is aimed at testing yours skills at setting up and creating a TODO tasks application with 
-ReactJS using the [next.js](https://nextjs.org/learn/basics/create-nextjs-app) Framework.
+## Technologies
+- [React](https://reactjs.org/)
+- [NextJs](https://nextjs.org) 
+- [MaterialUI](https://mui.com/)
 
-The application should create, modify and delete tasks.
+## Run App
+```bash
+npm i
+npm run dev
+# or
+yarn dev
+```
 
-The tasks should also be persisted so that the tasks survive a page refresh.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-We expect the application to be unit tested.
+## Screenshots
+<img src="https://raw.githubusercontent.com/shez1461/nextjs-todo-list/master/public/screenshot1.png" alt="screenshot 1" />
+<img src="https://raw.githubusercontent.com/shez1461/nextjs-todo-list/master/public/screenshot2.png" alt="screenshot 1" />
+<img src="https://raw.githubusercontent.com/shez1461/nextjs-todo-list/master/public/screenshot3.png" alt="screenshot 1" />
 
-The UI must be responsive, accessible and pretty.
-
-Please include instructions on how we can build and run the code.
-
-# Process
-
-Create a [GitHub](https://github.com/) project.
-Once you are happy with your code please provide us with a link to the repository.
-We will review the application and get back to you.
-
-Have fun!
-
-# Documentation
-Please document/populate/create the following files
-* `ASSUMPTIONS.md`
-  * Document Assumptions and why.
-* `DECISIONS.md`
-  * Document Decisions made and why.
-* `DESIGN.md`
-  * Document Design decisions/changes/approaches and why
-* `PROBLEMS_SOLUTIONS.md`
-  * Document Problems encountered and the solution you took
-
-# Requirements
-
-* React 17+
-* State management ( Redux, local/session storage )
-* SASS
-* Must be responsive
-* The design must support a large number of tasks.
-* The application must support the ability to
-  * Create To Do Item
-  * Edit To Do Item
-  * Delete To Do Item
-  * Complete To Do Item
-
-# Sample Designs
-Please find some sample Designs in the [designs](designs) folder.
-Pick 1 design and implement and/or improve upon.
-Explain why you choose this in the `DESIGN.md`.
-
-# Sample ToDo Items
-Please find some sample ToDo Items in the [data](data) folder.
-Samples are guides only. Document any decisions in regards to this data.
-
-# Bonus
-
-* Integration tests
-* React Hooks
-* Persist tasks to disk
-* Redux
+## License
+The MIT License (MIT). Please see [License File](license.md) for more information.
