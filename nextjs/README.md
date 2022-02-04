@@ -1,7 +1,7 @@
 ## [ToDo App Tech Test](https://github.com/shez1461) TODO App Tech Test
-Inspired & Reffered by various demos online and YouTube.
+Inspired & Reffered by various demos online and YouTube tutorials.
 
-## App Demo
+## Live App Demo
 [Open Live Demo](https://shez.app)
 
 ## Features
@@ -11,10 +11,16 @@ Inspired & Reffered by various demos online and YouTube.
 - Delete Task
 - Mark as Completed
 
+## Bonus
+* Integration tests
+* React Hooks
+* Persist tasks to disk
+* Redux
+
 ## Technologies
+- [React](https://reactjs.org/)
 - [NextJs](https://nextjs.org) 
-- [@material-ui](https://material-ui.com)
-- [Firebase](https://firebase.google.com)
+- [MaterialUI](https://mui.com/)
 
 ## Run App
 ```bash

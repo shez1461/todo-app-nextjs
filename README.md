@@ -11,6 +11,12 @@ Inspired & Reffered by various demos online and YouTube tutorials.
 - Delete Task
 - Mark as Completed
 
+## Bonus
+* Integration tests
+* React Hooks
+* Persist tasks to disk
+* Redux
+
 ## Technologies
 - [React](https://reactjs.org/)
 - [NextJs](https://nextjs.org) 
