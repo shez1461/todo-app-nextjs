@@ -33,6 +33,7 @@ function App() {
   function handleAddTodo(e) {
     const name = todoNameRef.current.value
     console.warn('Value: ', name);
+    console.log(todoNameRef.current);
     if (name === '') return
     setTodos(prevTodos => {
       return [...prevTodos, { id: uuidv4(), name: name, complete: false}]
@@ -70,18 +71,19 @@ function App() {
 
         <TodoList todos={todos} toggleTodo={toggleTodo} />
         <TextField 
-          id="title"
+          id="inputField"
           label="Type here to add new task item..."
           //defaultValue="Do Laundry"
           helperText="Maximum of 256 Characters."
-          inputProps={{ minLength: 1, maxLength: 256 }}
+          inputProps={{ minLength: 2, maxLength: 256 }}
+          //value={todoNameRef}
           ref={todoNameRef}
           type="text"
           variant="outlined"
           fullWidth
           margin="normal"
         />
-        <input type="text" ref={todoNameRef} />
+        {/*<input type="text" ref={todoNameRef} />*/}
 
         <Stack direction="row" align="center" spacing={4}>
           <Button color="success" size="large" onClick={handleAddTodo} variant="contained">Add</Button>
