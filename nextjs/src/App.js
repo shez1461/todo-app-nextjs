@@ -13,15 +13,11 @@ import AddIcon from '@mui/icons-material/Add';
 import DeleteSweep from '@mui/icons-material/DeleteSweep';
 //import ProTip from '../src/ProTip';
 import MaterialUISwitch from '../components/muiswitch';
-import { uuid } from 'uuidv4';
 
 const LOCAL_STORAGE_KEY = 'todoApp.todos'
 
 function App(props) {
   const [todos, setTodos] = useState([])
-  const [todo, setTodo] = useState('');
-  const [todoEditing, setTodoEditing] = useState(null);
-  const [editingText, setEditingText] = useState('');
   const todoNameRef = useRef()
 
   // Get Item in browser LocalStorage
@@ -49,20 +45,11 @@ function App(props) {
   function handleAddTodo(e) {
     const name = todoNameRef.current.value
     console.warn('Added:', name)
-    if (name === '') return null
+    if (name === '') return
     setTodos(prevTodos => {
       return [...prevTodos, { id: uuidv4(), name: name, complete: false}]
     })
     todoNameRef.current.value = null
-  }
-
-  // Handle Edit Todo
-  function handleEditTodo(newValue) {
-    if (!newValue.text || /^\s*$/.test(newValue.text)) {
-      return;
-    }
-    setTodos(prev => prev.map(item => (item.id === todo ? newValue : item)));
-    console.log(newValue.text);
   }
 
   // Handle Delete Todo
@@ -91,7 +78,7 @@ function App(props) {
         component="form"
         sx={{
           '& > :not(style)': { mt: 2, my: 2, m: 2, width: '100%' },
-          width: 450,
+          width: 500,
           maxWidth: '100%',
         }}
         noValidate
@@ -113,6 +100,7 @@ function App(props) {
             type="text"
             fullWidth
             inputRef={todoNameRef}
+            multiline={true}
           />
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
           <IconButton onClick={handleAddTodo} color="primary" sx={{ p: '10px' }} aria-label="directions">
