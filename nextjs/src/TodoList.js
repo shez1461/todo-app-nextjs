@@ -1,7 +1,7 @@
 import React from 'react'
 import Todo from './Todo'
 
-export default function TodoList({ todos, toggleTodo }) {
+export default function TodoList({ todos, toggleTodo, saveEdit }) {
   return (
     todos.map(todo => {
       return (
@@ -9,6 +9,7 @@ export default function TodoList({ todos, toggleTodo }) {
           key={todo.id} 
           toggleTodo={toggleTodo} 
           todo={todo}
+          saveEdit={saveEdit}
         />
       )
     })

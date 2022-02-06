@@ -1,8 +1,9 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
+import { createTheme, ThemeProvider } from '@mui/system';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -52,12 +53,15 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function CustomizedSwitches() {
+
   return (
     <FormGroup>
       <FormControlLabel
         control={
           <MaterialUISwitch 
             sx={{ mt: 2, my: 2, m: 2 }} 
+            //checked={toggleDarkMode} 
+            //onChange={() => setDark(!dark)}
           />
         }
         label="Theme Appearance"

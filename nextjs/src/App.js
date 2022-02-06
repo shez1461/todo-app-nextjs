@@ -11,11 +11,15 @@ import DeleteSweep from '@mui/icons-material/DeleteSweep';
 import MaterialUISwitch from '../components/muiswitch';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-const LOCAL_STORAGE_ADD = 'add'
+const LOCAL_STORAGE_ADD = 'todo.list.app'
 
 function App() {
   const [todos, setTodos] = useState([])
+  const [todo, setTodo] = useState('');
+  const [todoEditing, setTodoEditing] = useState(null);
+  const [editingText, setEditingText] = useState("");
   const todoNameRef = useRef()
 
   // Get Item in browser LocalStorage
@@ -42,7 +46,6 @@ function App() {
   // Handle Add Todo
   function handleAddTodo(e) {
     const name = todoNameRef.current.value
-    console.warn('Added:', name)
     if (name === '') {
       return
     } 
@@ -50,13 +53,36 @@ function App() {
       setTodos(prevTodos => {
         return [...prevTodos, { id: uuidv4(), name: name, complete: false}]
       })
+      console.warn('Added:', name)
     }
     todoNameRef.current.value = null
   }
 
+  // Handle Save Edit
+  function saveEdit(id) {
+    console.warn('id:', id)
+    const findTag = document.getElementById("textarea")
+    const refName = todoNameRef.current.value;
+    const updatedTodos = [...todos].map((todo) => {
+      if (todo.id != id) {
+        editingText = todo.name;
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+    setTodoEditing(null);
+    console.warn('getElementById:', findTag, refName)
+  }
+
+  // Delete a Todo
+  function deleteTodo() {
+    const deleteATodo = todos.filter(todo => !todo.complete)
+    setTodos(deleteATodo)
+  }
+
   // Handle Delete Todo
   function handleDeleteTodos() {
-    const newTodos = todos.filter(todo => !todo.complete)
+    const newTodos = todos.filter(todo => todo.complete && !todo.complete)
     setTodos(newTodos)
   }
 
@@ -97,12 +123,10 @@ function App() {
           <IconButton onClick={handleAddTodo} color="primary" sx={{ p: '10px' }} aria-label="directions">
             <AddIcon />
           </IconButton>
-          {/*
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-          <IconButton onClick={saveEdits} color="default" sx={{ p: '10px' }} aria-label="directions">
-            <EditIcon />
+          <IconButton onClick={deleteTodo} color="default" sx={{ p: '10px' }} aria-label="directions">
+            <DeleteForeverIcon />
           </IconButton>
-          */}
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
           <IconButton onClick={handleDeleteTodos} color="default" sx={{ p: '10px' }} aria-label="directions">
             <DeleteSweep />
@@ -116,6 +140,7 @@ function App() {
           }}
           todos={todos}
           toggleTodo={toggleTodo}
+          saveEdit={saveEdit}
         />
 
         {/* Buttons
