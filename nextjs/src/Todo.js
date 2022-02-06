@@ -8,16 +8,16 @@ import EditIcon from '@mui/icons-material/Edit';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { v4 as uuidv4 } from 'uuid';
 
-const LOCAL_STORAGE_KEY2 = 'todoApp.edit.todos'
+const LOCAL_STORAGE_EDIT = 'edit'
 
 export default function Todo({ todo, toggleTodo }) {
-  const [todos, setTodos] = useState('');
+  const [todos, setTodos] = useState([]);
   const todoNameRef = useRef()
   const labelId = `checkbox-list-label-${todo.id}`;
 
   // Get Item in browser LocalStorage
   useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY2))
+    const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_EDIT))
     if (storedTodos) {
       setTodos(storedTodos)
     }
@@ -25,22 +25,25 @@ export default function Todo({ todo, toggleTodo }) {
 
   // Set Item in browser LocalStorage
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY2, JSON.stringify(todos))
+    localStorage.setItem(LOCAL_STORAGE_EDIT, JSON.stringify(todos))
   }, [todos])
 
   function handleTodoClick() {
     toggleTodo(todo.id)
   }
 
-  function handleEditClick(e) {
-    e.preventDefault();
+  function handleEditClick() {
+    //e.preventDefault(id);
     const newValue = todoNameRef.current.value
     const defValue = todoNameRef.current.defaultValue
-    console.warn('Edited:', newValue)
-    if (newValue != defValue) return
-    setTodos(prevTodos => {
-      return [...prevTodos, { id: uuidv4(), newValue: newValue, complete: false}]
-    })
+    console.warn('Edited:', todo.id, newValue)
+    if (newValue != defValue || newValue === defValue) {
+      return
+    } else {
+      setTodos(updateTodos => {
+        return [...updateTodos, { id: uuidv4(), name: newValue, complete: false }]
+      })
+    }
     todoNameRef.current.value = null
   }
 
@@ -62,8 +65,7 @@ export default function Todo({ todo, toggleTodo }) {
         <TextField 
           id={labelId}
           sx={{ width: '100%' }}
-          //value={todo.name} // Controlled value
-          defaultValue={todo.name} // default value as per doc
+          defaultValue={todo.name} // Default value as per mui doc
           inputProps={{ minLength: 2, maxLength: 256 }}
           variant="standard"
           color="primary"

@@ -6,23 +6,21 @@ import { Alert, Stack } from '@mui/material';
 import { Box, Container, Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
+import AddIcon from '@mui/icons-material/Add';
+import DeleteSweep from '@mui/icons-material/DeleteSweep';
+import MaterialUISwitch from '../components/muiswitch';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import AddIcon from '@mui/icons-material/Add';
-//import EditIcon from '@mui/icons-material/Edit';
-import DeleteSweep from '@mui/icons-material/DeleteSweep';
-//import ProTip from '../src/ProTip';
-import MaterialUISwitch from '../components/muiswitch';
 
-const LOCAL_STORAGE_KEY = 'todoApp.todos'
+const LOCAL_STORAGE_ADD = 'add'
 
-function App(props) {
+function App() {
   const [todos, setTodos] = useState([])
   const todoNameRef = useRef()
 
   // Get Item in browser LocalStorage
   useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+    const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_ADD))
     if (storedTodos) {
       setTodos(storedTodos)
     }
@@ -30,7 +28,7 @@ function App(props) {
 
   // Set Item in browser LocalStorage
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos))
+    localStorage.setItem(LOCAL_STORAGE_ADD, JSON.stringify(todos))
   }, [todos])
 
   // Toggle Todo
@@ -45,10 +43,14 @@ function App(props) {
   function handleAddTodo(e) {
     const name = todoNameRef.current.value
     console.warn('Added:', name)
-    if (name === '') return
-    setTodos(prevTodos => {
-      return [...prevTodos, { id: uuidv4(), name: name, complete: false}]
-    })
+    if (name === '') {
+      return
+    } 
+    else {
+      setTodos(prevTodos => {
+        return [...prevTodos, { id: uuidv4(), name: name, complete: false}]
+      })
+    }
     todoNameRef.current.value = null
   }
 
@@ -56,18 +58,6 @@ function App(props) {
   function handleDeleteTodos() {
     const newTodos = todos.filter(todo => !todo.complete)
     setTodos(newTodos)
-  }
-
-  // Save Edits
-  function saveEdits(id) {
-    const updatedTodos = [...todos].map((todo) => {
-      if (todo.id === id) {
-        todo.text = editingText;
-      }
-      return todo;
-    });
-    setTodos(updatedTodos);
-    setTodoEditing(null);
   }
 
   return (
@@ -102,6 +92,7 @@ function App(props) {
             inputRef={todoNameRef}
             multiline={true}
           />
+          {/* Icons */}
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
           <IconButton onClick={handleAddTodo} color="primary" sx={{ p: '10px' }} aria-label="directions">
             <AddIcon />
@@ -127,7 +118,7 @@ function App(props) {
           toggleTodo={toggleTodo}
         />
 
-        {/*
+        {/* Buttons
         <Stack direction="row" align="center" spacing={2}>
           <Button color="success" size="large" variant="contained">Add</Button>
           <Button color="primary" size="large" onClick={handleEditTodo} variant="outlined" disabled>Edit</Button>
