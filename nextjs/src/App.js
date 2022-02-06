@@ -12,19 +12,19 @@ import MaterialUISwitch from '../components/muiswitch';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { useLocalStorage } from "../hooks/useLocalStorage";
+import Tooltip from '@mui/material/Tooltip';
 
-const LOCAL_STORAGE_ADD = 'todo.list.app'
+const LOCAL_STORAGE = 'todo.list.app'
 
 function App() {
   const [todos, setTodos] = useState([])
-  const [todo, setTodo] = useState('');
-  const [todoEditing, setTodoEditing] = useState(null);
-  const [editingText, setEditingText] = useState("");
   const todoNameRef = useRef()
+  const [name, setName] = useLocalStorage(LOCAL_STORAGE, '');
 
   // Get Item in browser LocalStorage
   useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_ADD))
+    const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE))
     if (storedTodos) {
       setTodos(storedTodos)
     }
@@ -32,7 +32,7 @@ function App() {
 
   // Set Item in browser LocalStorage
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_ADD, JSON.stringify(todos))
+    localStorage.setItem(LOCAL_STORAGE, JSON.stringify(todos))
   }, [todos])
 
   // Toggle Todo
@@ -56,22 +56,6 @@ function App() {
       console.warn('Added:', name)
     }
     todoNameRef.current.value = null
-  }
-
-  // Handle Save Edit
-  function saveEdit(id) {
-    console.warn('id:', id)
-    const findTag = document.getElementById("textarea")
-    const refName = todoNameRef.current.value;
-    const updatedTodos = [...todos].map((todo) => {
-      if (todo.id != id) {
-        editingText = todo.name;
-      }
-      return todo;
-    });
-    setTodos(updatedTodos);
-    setTodoEditing(null);
-    console.warn('getElementById:', findTag, refName)
   }
 
   // Delete a Todo
@@ -116,21 +100,27 @@ function App() {
             type="text"
             fullWidth
             inputRef={todoNameRef}
-            multiline={true}
+            //multiline={true}
           />
           {/* Icons */}
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-          <IconButton onClick={handleAddTodo} color="primary" sx={{ p: '10px' }} aria-label="directions">
-            <AddIcon />
-          </IconButton>
+          <Tooltip title="Add" placement="top">
+            <IconButton onClick={handleAddTodo} color="primary" sx={{ p: '10px' }} aria-label="directions">
+              <AddIcon />
+            </IconButton>
+          </Tooltip>
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-          <IconButton onClick={deleteTodo} color="default" sx={{ p: '10px' }} aria-label="directions">
-            <DeleteForeverIcon />
-          </IconButton>
+          <Tooltip title="Clear Completed" placement="top">
+            <IconButton onClick={deleteTodo} color="default" sx={{ p: '10px' }} aria-label="directions">
+              <DeleteForeverIcon />
+            </IconButton>
+          </Tooltip>
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-          <IconButton onClick={handleDeleteTodos} color="default" sx={{ p: '10px' }} aria-label="directions">
-            <DeleteSweep />
-          </IconButton>
+          <Tooltip title="Clear All" placement="top">
+            <IconButton onClick={handleDeleteTodos} color="default" sx={{ p: '10px' }} aria-label="directions">
+              <DeleteSweep />
+            </IconButton>
+          </Tooltip>
         </Paper>
 
         <TodoList 
@@ -140,7 +130,7 @@ function App() {
           }}
           todos={todos}
           toggleTodo={toggleTodo}
-          saveEdit={saveEdit}
+          //saveEdit={saveEdit}
         />
 
         {/* Buttons
