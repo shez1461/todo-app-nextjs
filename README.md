@@ -2,7 +2,8 @@
 Inspired & Reffered by various todo demos online & tutorials.
 
 ## Live App Demo
-[Open Live Demo](https://shez.app)
+[Live Demo Hosted on Google Firebase](https://shez.app)
+[Live Demo Hosted on AWS Instance](http://18.169.158.177:8080/)
 
 ## Features
 **Task Module**
