@@ -77,7 +77,7 @@ function App() {
   }
 
   return (
-    <Box sx={{ flexGrow: 1, overflow: 'hidden', bgcolor: '#E7EBF0', border: '1px round black' }}>
+    <Box sx={{ height: '100vh', flexGrow: 1, overflow: 'hidden', bgcolor: 'background.default', border: '1px round background.default' }}>
       <Paper sx={{ bgcolor: '#fffff', maxWidth: "90%", my: 2, mx: 'auto', p: 2 }}>
         <Grid container wrap="nowrap" spacing={2} maxWidth="100%">
           <Box
