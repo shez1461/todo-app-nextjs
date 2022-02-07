@@ -16,7 +16,7 @@ export default function Todo({ todo, toggleTodo, saveEdit }) {
   const [title, setTitle] = useState([])
   const todoNameRef = useRef()
   const labelId = `checkbox-list-label-${todo.id}`;
-  const [asd, setName] = useLocalStorage(LOCAL_STORAGE, '');
+  //const [asd, setName] = useLocalStorage(LOCAL_STORAGE, '');
 
   // Get Item in browser LocalStorage
   useEffect(() => {

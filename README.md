@@ -1,5 +1,5 @@
 ## [ToDo App Tech Test](https://github.com/shez1461) TODO App Tech Test
-Inspired & Reffered by various demos online and YouTube tutorials.
+Inspired & Reffered by various todo demos online & tutorials.
 
 ## Live App Demo
 [Open Live Demo](https://shez.app)
@@ -38,4 +38,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 <img src="https://raw.githubusercontent.com/shez1461/nextjs-todo-list/master/public/screenshot3.png" alt="screenshot 1" />
 
 ## License
-The MIT License (MIT). Please see [License File](license.md) for more information.
+The MIT License (MIT). Please see [License File](./nextjs/LICENSE.md) for more information.

@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import TodoList from '../components/TodoList';
 import { v4 as uuidv4 } from 'uuid';
-import Copyright from '../components/Copyright';
+import Footer from '../components/Footer';
 import { Alert, Stack } from '@mui/material';
 import { Box, Grid, Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
@@ -12,21 +12,24 @@ import MaterialUISwitch from '../components/muiswitch';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { useLocalStorage } from "../hooks/useLocalStorage";
 import Tooltip from '@mui/material/Tooltip';
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import useDarkMode from '../hooks/useDarkMode';
+import useLocalStorage from "../hooks/useLocalStorage";
+//import useDarkMode from '../hooks/use-dark-mode';
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 const LOCAL_STORAGE = 'todo.list.app'
 
 function App() {
   const theme = useTheme();
-  const colorMode = React.useContext(ColorModeContext);
+  const colorMode = React.useContext(ColorModeContext)
   const [todos, setTodos] = useState([])
   const todoNameRef = useRef()
-  const [name, setName] = useLocalStorage(LOCAL_STORAGE, '');
+  //const darkMode = useDarkMode(initialState, darkModeConfig);
+  //const [darkMode, setDarkMode] = useDarkMode();
 
   // Get Item in browser LocalStorage
   useEffect(() => {
@@ -92,7 +95,7 @@ function App() {
               autoComplete="off"
             >
 
-              {/* Theme Switch <MaterialUISwitch /> */}
+              {/* Theme Switch <MaterialUISwitch /> darkMode={darkMode} setDarkMode={setDarkMode} */}
               <Box
                 sx={{
                   display: 'flex',
@@ -104,10 +107,11 @@ function App() {
                   borderRadius: 1,
                   p: 1,
                 }}
+                //onClick={handleThemeChange}
               >
                 {theme.palette.mode} mode
                 <Tooltip title="Appearance" placement="bottom">
-                  <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+                  <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode}  color="inherit">
                     {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
                   </IconButton>
                 </Tooltip>
@@ -187,7 +191,7 @@ function App() {
               <ProTip />
               */}
 
-              <Copyright/>
+              <Footer/>
 
             </Box>
           </Grid>
