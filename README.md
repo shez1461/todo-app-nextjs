@@ -1,7 +1,7 @@
 ## [ToDo App Tech Test](https://github.com/shez1461) TODO App Tech Test
 Inspired & Reffered by various todo demos online & tutorials.
 
-<img src="https://github.com/shez1461/todo-app-nextjs/blob/main/nextjs/public/screenshot1.png" width="300" height="300" />
+<img src="https://github.com/shez1461/todo-app-nextjs/blob/main/nextjs/public/Screenshot1.png" width="300" height="300" />
 <img src="https://github.com/shez1461/todo-app-nextjs/blob/main/nextjs/public/screenshot2.png" width="300" height="300" />
 
 ## Live App Demo
