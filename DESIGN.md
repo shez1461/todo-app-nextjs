@@ -1,0 +1,3 @@
+`Design 3` - This design is the most commonly used and simple for user to understand. There is no right or wrong design but if I were to create this app again, I would create an option to select or load different design before starting the app by using dropdown list or picture gif feature to populate the 3 options to the user to choose.
+
+The main reason to choose the design is the simplicity and easy to distinguish between the tasks overlapping. Borders around the edges of design 3 creates the illusion of much clearer list.

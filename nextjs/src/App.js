@@ -126,7 +126,7 @@ function App() {
                 sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%' }}
               >
                 <InputBase
-                  sx={{ ml: 1, flex: 1 }}
+                  sx={{ fontSize: '12px', ml: 1, flex: 1 }}
                   id="inputField"
                   placeholder="Type here to add new task item..."
                   inputProps={{ minLength: 2, maxLength: 256 }}
@@ -138,19 +138,19 @@ function App() {
                 {/* Icons */}
                 <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
                 <Tooltip title="Add" placement="top">
-                  <IconButton onClick={handleAddTodo} color="default" sx={{ p: '10px' }} aria-label="directions">
+                  <IconButton onClick={handleAddTodo} color="default" sx={{ p: '8px' }} aria-label="directions">
                     <AddIcon />
                   </IconButton>
                 </Tooltip>
                 <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
                 <Tooltip title="Clear Completed" placement="top">
-                  <IconButton onClick={deleteTodo} color="default" sx={{ p: '10px' }} aria-label="directions">
+                  <IconButton onClick={deleteTodo} color="default" sx={{ p: '8px' }} aria-label="directions">
                     <DeleteForeverIcon />
                   </IconButton>
                 </Tooltip>
                 <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
                 <Tooltip title="Clear All" placement="top">
-                  <IconButton onClick={handleDeleteTodos} color="default" sx={{ p: '10px' }} aria-label="directions">
+                  <IconButton onClick={handleDeleteTodos} color="default" sx={{ p: '8px' }} aria-label="directions">
                     <DeleteSweep />
                   </IconButton>
                 </Tooltip>
@@ -174,7 +174,7 @@ function App() {
               </Stack>
               */}
 
-              {/* Alert - Incomplete/Pending tasks todo */}
+              {/* Alert tally - Incomplete/Pending tasks todo */}
               <Stack sx={{ width: '100%' }} spacing={2}>
                 <Alert id="alertMsg" variant="filled" severity="success">
                   <div>Completed: <b>{todos.filter(todo => todo.complete).length}</b></div>
@@ -183,7 +183,7 @@ function App() {
                   <div>Incomplete: <b>{todos.filter(todo => !todo.complete).length}</b></div>
                 </Alert>
                 <Alert id="alertMsg" variant="filled" severity="info">
-                  <div>Total Items: <b>{todos.filter(todo => todo).length}</b></div>
+                  <div>Total: <b>{todos.filter(todo => todo).length}</b></div>
                 </Alert>
               </Stack>
 
