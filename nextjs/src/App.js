@@ -77,121 +77,123 @@ function App() {
   }
 
   return (
-    <Box sx={{ height: '100vh', flexGrow: 1, overflow: 'hidden', bgcolor: 'background.default', border: '1px round background.default' }}>
-      <Paper sx={{ bgcolor: '#fffff', maxWidth: "90%", my: 2, mx: 'auto', p: 2 }}>
-        <Grid container wrap="nowrap" spacing={2} maxWidth="100%">
-          <Box
-            component="form"
-            sx={{
-              '& > :not(style)': { mt: 2, my: 2, m: 2, width: '100%', height: 'auto' },
-              width: '100%',
-              maxWidth: '100%',
-            }}
-            noValidate
-            autoComplete="off"
-          >
-
-            {/* Theme Switch <MaterialUISwitch /> */}
+    <Grid container sx={{ paddingTop: 2, paddingBottom: '100%', flexGrow: 1, overflow: 'hidden', bgcolor: 'background.default', border: '1px round background.default' }}>
+      <Box sx={{ height: 'auto', flexGrow: 1, overflow: 'hidden', bgcolor: 'background.default', border: '1px round background.default' }}>
+        <Paper sx={{ bgcolor: 'background.default', maxWidth: "90%", my: 2, mx: 'auto', p: 2 }}>
+          <Grid container wrap="nowrap" spacing={2} maxWidth="100%">
             <Box
+              component="form"
               sx={{
-                display: 'flex',
+                '& > :not(style)': { mt: 2, my: 2, m: 2, width: '100%', height: 'auto' },
                 width: '100%',
-                alignItems: 'center',
-                justifyContent: 'right',
-                bgcolor: 'background.default',
-                color: 'text.primary',
-                borderRadius: 1,
-                p: 1,
-              }}
-            >
-              {theme.palette.mode} mode
-              <Tooltip title="Appearance" placement="bottom">
-                <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
-                  {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-                </IconButton>
-              </Tooltip>
-            </Box>
-
-            {/* Header H1/H4 */}
-            <Typography variant="h4" component="h1" gutterBottom>
-              To Do
-            </Typography>
-
-            <Paper
-              sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%' }}
-            >
-              <InputBase
-                sx={{ ml: 1, flex: 1 }}
-                id="inputField"
-                placeholder="Type here to add new task item..."
-                inputProps={{ minLength: 2, maxLength: 256 }}
-                type="text"
-                fullWidth
-                inputRef={todoNameRef}
-                //multiline={true}
-              />
-              {/* Icons */}
-              <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-              <Tooltip title="Add" placement="top">
-                <IconButton onClick={handleAddTodo} color="default" sx={{ p: '10px' }} aria-label="directions">
-                  <AddIcon />
-                </IconButton>
-              </Tooltip>
-              <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-              <Tooltip title="Clear Completed" placement="top">
-                <IconButton onClick={deleteTodo} color="default" sx={{ p: '10px' }} aria-label="directions">
-                  <DeleteForeverIcon />
-                </IconButton>
-              </Tooltip>
-              <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-              <Tooltip title="Clear All" placement="top">
-                <IconButton onClick={handleDeleteTodos} color="default" sx={{ p: '10px' }} aria-label="directions">
-                  <DeleteSweep />
-                </IconButton>
-              </Tooltip>
-            </Paper>
-
-            <TodoList 
-              sx={{
-                '& > :not(style)': { mt: 2, my: 2, m: 2, width: '100%' },
                 maxWidth: '100%',
               }}
-              todos={todos}
-              toggleTodo={toggleTodo}
-              //saveEdit={saveEdit}
-            />
+              noValidate
+              autoComplete="off"
+            >
 
-            {/* Buttons
-            <Stack direction="row" align="center" spacing={2}>
-              <Button color="success" size="large" variant="contained">Add</Button>
-              <Button color="primary" size="large" onClick={handleEditTodo} variant="outlined" disabled>Edit</Button>
-              <Button color="warning" size="large" onClick={handleDeleteTodos} variant="outlined">Delete</Button>
-            </Stack>
-            */}
+              {/* Theme Switch <MaterialUISwitch /> */}
+              <Box
+                sx={{
+                  display: 'flex',
+                  maxWidth: '100%',
+                  alignItems: 'center',
+                  justifyContent: 'right',
+                  bgcolor: 'background.primary',
+                  color: 'text.primary',
+                  borderRadius: 1,
+                  p: 1,
+                }}
+              >
+                {theme.palette.mode} mode
+                <Tooltip title="Appearance" placement="bottom">
+                  <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+                    {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                  </IconButton>
+                </Tooltip>
+              </Box>
 
-            {/* Alert - Incomplete/Pending tasks todo */}
-            <Stack sx={{ width: '100%' }} spacing={2}>
-              <Alert id="alertMsg" variant="filled" severity="success">
-                <div>Completed: <b>{todos.filter(todo => todo.complete).length}</b></div>
-              </Alert>
-              <Alert id="alertMsg" variant="filled" severity="warning">
-                <div>Incomplete: <b>{todos.filter(todo => !todo.complete).length}</b></div>
-              </Alert>
-              <Alert id="alertMsg" variant="filled" severity="info">
-                <div>Total Items: <b>{todos.filter(todo => todo).length}</b></div>
-              </Alert>
-            </Stack>
+              {/* Header H1/H4 */}
+              <Typography variant="h4" component="h1" gutterBottom>
+                To Do
+              </Typography>
 
-            {/* User Tip 
-            <ProTip />
-            */}
+              <Paper
+                sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%' }}
+              >
+                <InputBase
+                  sx={{ ml: 1, flex: 1 }}
+                  id="inputField"
+                  placeholder="Type here to add new task item..."
+                  inputProps={{ minLength: 2, maxLength: 256 }}
+                  type="text"
+                  fullWidth
+                  inputRef={todoNameRef}
+                  //multiline={true}
+                />
+                {/* Icons */}
+                <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+                <Tooltip title="Add" placement="top">
+                  <IconButton onClick={handleAddTodo} color="default" sx={{ p: '10px' }} aria-label="directions">
+                    <AddIcon />
+                  </IconButton>
+                </Tooltip>
+                <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+                <Tooltip title="Clear Completed" placement="top">
+                  <IconButton onClick={deleteTodo} color="default" sx={{ p: '10px' }} aria-label="directions">
+                    <DeleteForeverIcon />
+                  </IconButton>
+                </Tooltip>
+                <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+                <Tooltip title="Clear All" placement="top">
+                  <IconButton onClick={handleDeleteTodos} color="default" sx={{ p: '10px' }} aria-label="directions">
+                    <DeleteSweep />
+                  </IconButton>
+                </Tooltip>
+              </Paper>
 
-            <Copyright/>
+              <TodoList 
+                sx={{
+                  '& > :not(style)': { mt: 2, my: 2, m: 2, width: '100%' },
+                  maxWidth: '100%',
+                }}
+                todos={todos}
+                toggleTodo={toggleTodo}
+                //saveEdit={saveEdit}
+              />
 
-          </Box>
-        </Grid>
-      </Paper>
-    </Box>
+              {/* Buttons
+              <Stack direction="row" align="center" spacing={2}>
+                <Button color="success" size="large" variant="contained">Add</Button>
+                <Button color="primary" size="large" onClick={handleEditTodo} variant="outlined" disabled>Edit</Button>
+                <Button color="warning" size="large" onClick={handleDeleteTodos} variant="outlined">Delete</Button>
+              </Stack>
+              */}
+
+              {/* Alert - Incomplete/Pending tasks todo */}
+              <Stack sx={{ width: '100%' }} spacing={2}>
+                <Alert id="alertMsg" variant="filled" severity="success">
+                  <div>Completed: <b>{todos.filter(todo => todo.complete).length}</b></div>
+                </Alert>
+                <Alert id="alertMsg" variant="filled" severity="warning">
+                  <div>Incomplete: <b>{todos.filter(todo => !todo.complete).length}</b></div>
+                </Alert>
+                <Alert id="alertMsg" variant="filled" severity="info">
+                  <div>Total Items: <b>{todos.filter(todo => todo).length}</b></div>
+                </Alert>
+              </Stack>
+
+              {/* User Tip 
+              <ProTip />
+              */}
+
+              <Copyright/>
+
+            </Box>
+          </Grid>
+        </Paper>
+      </Box>
+    </Grid>
   )
 }
 
