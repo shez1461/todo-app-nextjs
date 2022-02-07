@@ -18,5 +18,3 @@ Further improvments could have been made such as - a Confirmation/diaglog box to
 9. LocalStorage was used to demonstrate the use of state management, theme & tasks to be persisted when refreshed or close browser. Otherwise DB server would have been used in real scenario if time permitted.
 
 10. Sample.json - Title, Description & Date were not used to retrieve and store data due to time limitation but otherwise it could have been used as `import json from 'data/sample.json'` to retrieve and store data on generated input fields to showcase the use of persisted calls (mock-up of DB server)
-
-11. 
