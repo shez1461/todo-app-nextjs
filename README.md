@@ -1,8 +1,10 @@
 ## [ToDo App Tech Test](https://github.com/shez1461) TODO App Tech Test
 Inspired & Reffered by various todo demos online & tutorials.
+- <img src="https://raw.githubusercontent.com/shez1461/todo-app-nextjs/master/public/screenshot1.png" alt="screenshot 1" width="250" height="250" />
+- <img src="https://raw.githubusercontent.com/shez1461/todo-app-nextjs/master/public/screenshot2.png" alt="screenshot 2" width="250" height="250" />
 
 ## Live App Demo
-[Open Live Demo](https://shez.app)
+- AWS - [Live Demo Hosted on AWS Instance](http://18.169.158.177:8080/)
 
 ## Features
 **Task Module**
@@ -31,11 +33,6 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Screenshots
-<img src="https://raw.githubusercontent.com/shez1461/nextjs-todo-list/master/public/screenshot1.png" alt="screenshot 1" />
-<img src="https://raw.githubusercontent.com/shez1461/nextjs-todo-list/master/public/screenshot2.png" alt="screenshot 1" />
-<img src="https://raw.githubusercontent.com/shez1461/nextjs-todo-list/master/public/screenshot3.png" alt="screenshot 1" />
 
 ## License
 The MIT License (MIT). Please see [License File](./nextjs/LICENSE.md) for more information.
