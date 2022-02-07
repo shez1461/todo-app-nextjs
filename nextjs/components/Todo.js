@@ -53,7 +53,7 @@ export default function Todo({ todo, toggleTodo, saveEdit }) {
   return (
     <>
       <Paper
-        sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%' }}
+        sx={{ p: '2px 2px', display: 'flex', alignItems: 'center', width: '100%' }}
       >
         <Tooltip title="" placement="top">
           <DragIndicatorIcon 

@@ -64,7 +64,7 @@ export default function CustomizedSwitches() {
             //onChange={() => setDark(!dark)}
           />
         }
-        label="Theme Appearance"
+        label=""
       />
     </FormGroup>
   );
