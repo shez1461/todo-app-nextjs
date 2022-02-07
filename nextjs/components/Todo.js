@@ -5,8 +5,9 @@ import TextField  from '@mui/material/TextField';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
-import { useLocalStorage } from "../hooks/useLocalStorage";
 import Tooltip from '@mui/material/Tooltip';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const LOCAL_STORAGE = 'todo.list.app2'
 
@@ -31,12 +32,11 @@ export default function Todo({ todo, toggleTodo, saveEdit }) {
   }, [todos])
 
   function handleTodoClick() {
-    console.log('[x] -', todo.complete, todo.id);
     toggleTodo(todo.id)
   }
 
   // Handle Save Edit
-  function saveEdit(id) {
+  function savedEdit(id) {
     const name = todoNameRef.current.value
     if (name === '') {
       return
@@ -47,7 +47,7 @@ export default function Todo({ todo, toggleTodo, saveEdit }) {
       })
       console.warn('Edited:', todo.id, name)
     }
-    todoNameRef.current.value = name
+    //todoNameRef.current.value = name
   }
 
   return (
@@ -55,13 +55,25 @@ export default function Todo({ todo, toggleTodo, saveEdit }) {
       <Paper
         sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%' }}
       >
-        <Tooltip title="" placement="left">
+        <Tooltip title="" placement="top">
+          <DragIndicatorIcon 
+            id={`drag-uuid-${todo.id}`}
+            type="drag"
+            //checked={todo.complete} 
+            //onChange={handleTodoClick}
+            sx={{ '& .MuiSvgIcon-root': { fontSize: 24 } }}
+            //inputProps={{ 'aria-labelledby': labelId }}
+            color="default"
+            tabIndex={-1}
+          />
+        </Tooltip>
+        <Tooltip title="" placement="top">
           <Checkbox 
             id={`checkbox-uuid-${todo.id}`}
             type="checkbox"
             checked={todo.complete} 
             onChange={handleTodoClick}
-            sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+            sx={{ '& .MuiSvgIcon-root': { fontSize: 24 } }}
             inputProps={{ 'aria-labelledby': labelId }}
             color="success"
             tabIndex={-1}
@@ -80,15 +92,17 @@ export default function Todo({ todo, toggleTodo, saveEdit }) {
             hiddenLabel
             //multiline={true}
             inputRef={todoNameRef}
-            //onChange={(e) => saveEdit(e.target.value)}
+            onChange={(e) => savedEdit(e.target.value)}
           />
         </Tooltip>
+        {/*}
         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
         <Tooltip title="Edit" placement="right">
           <IconButton onClick={(e) => saveEdit(e.target.value)} color="default" sx={{ p: '10px' }} aria-label="directions">
             <EditIcon />
           </IconButton>
         </Tooltip>
+        */}
       </Paper>
     </>
   )

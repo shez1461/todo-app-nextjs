@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import TodoList from './TodoList';
+import TodoList from '../components/TodoList';
 import { v4 as uuidv4 } from 'uuid';
-import Copyright from './Copyright';
+import Copyright from '../components/Copyright';
 import { Alert, Stack } from '@mui/material';
 import { Box, Container, Typography } from '@mui/material';
 import Paper from '@mui/material/Paper';
@@ -105,7 +105,7 @@ function App() {
           {/* Icons */}
           <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
           <Tooltip title="Add" placement="top">
-            <IconButton onClick={handleAddTodo} color="primary" sx={{ p: '10px' }} aria-label="directions">
+            <IconButton onClick={handleAddTodo} color="default" sx={{ p: '10px' }} aria-label="directions">
               <AddIcon />
             </IconButton>
           </Tooltip>
