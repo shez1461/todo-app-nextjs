@@ -13,7 +13,6 @@ const LOCAL_STORAGE = 'todo.list.app2'
 
 export default function Todo({ todo, toggleTodo }) {
   const [todos, setTodos] = useState([]);
-  const [title, setTitle] = useState([])
   const todoNameRef = useRef()
   const labelId = `checkbox-list-label-${todo.id}`;
   //const [asd, setName] = useLocalStorage(LOCAL_STORAGE, '');
