@@ -9,7 +9,7 @@ export default function TodoList({ todos, toggleTodo, saveEdit }) {
           key={todo.id} 
           toggleTodo={toggleTodo} 
           todo={todo}
-          saveEdit={saveEdit}
+          //saveEdit={saveEdit}
         />
       )
     })

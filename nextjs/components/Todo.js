@@ -11,7 +11,7 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const LOCAL_STORAGE = 'todo.list.app2'
 
-export default function Todo({ todo, toggleTodo, saveEdit }) {
+export default function Todo({ todo, toggleTodo }) {
   const [todos, setTodos] = useState([]);
   const [title, setTitle] = useState([])
   const todoNameRef = useRef()
@@ -40,14 +40,14 @@ export default function Todo({ todo, toggleTodo, saveEdit }) {
     const name = todoNameRef.current.value
     if (name === '') {
       return
-    } 
+    }
     else {
       setTodos(prevTodos => {
         return [...prevTodos, { id: todo.id, name: name, complete: false}]
       })
       console.warn('Edited:', todo.id, name)
     }
-    //todoNameRef.current.value = name
+    todoNameRef.current.value = name
   }
 
   return (
@@ -83,7 +83,7 @@ export default function Todo({ todo, toggleTodo, saveEdit }) {
           <TextField 
             //id={labelId}
             id="textarea"
-            sx={{ width: '100%' }}
+            sx={{ width: '100%', p: '12px' }}
             //value={name}
             defaultValue={todo.name} // Default value as per mui doc
             inputProps={{ minLength: 2, maxLength: 256 }}
@@ -92,17 +92,21 @@ export default function Todo({ todo, toggleTodo, saveEdit }) {
             hiddenLabel
             //multiline={true}
             inputRef={todoNameRef}
-            onChange={(e) => savedEdit(e.target.value)}
+            //onChange={(e) => savedEdit(e.target.value)}
+            onClick={() => handleTodoClick()}
+            style={{
+              textDecoration: todo.complete ? 'line-through' : '' 
+            }}
           />
         </Tooltip>
-        {/*}
+        {/* */}
         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
         <Tooltip title="Edit" placement="right">
-          <IconButton onClick={(e) => saveEdit(e.target.value)} color="default" sx={{ p: '10px' }} aria-label="directions">
+          <IconButton onClick={(e) => savedEdit(e.target.value)} color="default" sx={{ p: '10px' }} aria-label="directions">
             <EditIcon />
           </IconButton>
         </Tooltip>
-        */}
+        
       </Paper>
     </>
   )
