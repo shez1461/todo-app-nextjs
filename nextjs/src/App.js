@@ -44,6 +44,14 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE, JSON.stringify(todos))
   }, [todos])
 
+
+  // Handle Enter Key
+  const handleEnterKey = (e) => {
+    if (e.key === 'Enter') {
+      handleAddTodo(e);
+    }
+  }  
+
   // Toggle Todo
   function toggleTodo(id) {
     const newTodos = [...todos]
@@ -133,24 +141,25 @@ function App() {
                   type="text"
                   fullWidth
                   inputRef={todoNameRef}
+                  onKeyDown={handleEnterKey}
                   //multiline={true}
                 />
                 {/* Icons */}
                 <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
                 <Tooltip title="Add" placement="top">
-                  <IconButton onClick={handleAddTodo} color="default" sx={{ p: '8px' }} aria-label="directions">
+                  <IconButton onClick={handleAddTodo} color="default" sx={{ p: '10px' }} aria-label="directions">
                     <AddIcon />
                   </IconButton>
                 </Tooltip>
                 <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
                 <Tooltip title="Clear Completed" placement="top">
-                  <IconButton onClick={deleteTodo} color="default" sx={{ p: '8px' }} aria-label="directions">
+                  <IconButton onClick={deleteTodo} color="default" sx={{ p: '10px' }} aria-label="directions">
                     <DeleteForeverIcon />
                   </IconButton>
                 </Tooltip>
                 <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
                 <Tooltip title="Clear All" placement="top">
-                  <IconButton onClick={handleDeleteTodos} color="default" sx={{ p: '8px' }} aria-label="directions">
+                  <IconButton onClick={handleDeleteTodos} color="default" sx={{ p: '10px' }} aria-label="directions">
                     <DeleteSweep />
                   </IconButton>
                 </Tooltip>
