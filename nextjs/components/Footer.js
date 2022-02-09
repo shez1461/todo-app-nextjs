@@ -7,9 +7,9 @@ export default function Copyright() {
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright '}&copy;{new Date().getFullYear()}{' under '}
       <MuiLink color="inherit" target="_blank" href="https://en.wikipedia.org/wiki/MIT_License">
-      {'(MIT) License.'}
+      {'MIT'}
       </MuiLink>
-      {' Tasks To Do App by '}
+      {' License. '}
       <MuiLink color="inherit" target="_blank" href="https://github.com/shez1461/">
         Mohamed Shez
       </MuiLink>

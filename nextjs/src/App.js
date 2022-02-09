@@ -8,7 +8,6 @@ import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteSweep from '@mui/icons-material/DeleteSweep';
-import MaterialUISwitch from '../components/muiswitch';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -16,8 +15,8 @@ import Tooltip from '@mui/material/Tooltip';
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import useDarkMode from '../hooks/useDarkMode';
-import useLocalStorage from "../hooks/useLocalStorage";
+//import useDarkMode from '../hooks/useDarkMode';
+//import useLocalStorage from "../hooks/useLocalStorage";
 //import useDarkMode from '../hooks/use-dark-mode';
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
@@ -185,14 +184,14 @@ function App() {
 
               {/* Alert tally - Incomplete/Pending tasks todo */}
               <Stack sx={{ width: '100%' }} spacing={2}>
-                <Alert id="alertMsg" variant="filled" severity="success">
-                  <div>Completed: <b>{todos.filter(todo => todo.complete).length}</b></div>
+                <Alert id="alertMsg" variant="outlined" severity="success">
+                  <div>Completed: <strong>{todos.filter(todo => todo.complete).length}</strong></div>
                 </Alert>
-                <Alert id="alertMsg" variant="filled" severity="warning">
-                  <div>Incomplete: <b>{todos.filter(todo => !todo.complete).length}</b></div>
+                <Alert id="alertMsg" variant="outlined" severity="warning">
+                  <div>Incomplete: <strong>{todos.filter(todo => !todo.complete).length}</strong></div>
                 </Alert>
-                <Alert id="alertMsg" variant="filled" severity="info">
-                  <div>Total: <b>{todos.filter(todo => todo).length}</b></div>
+                <Alert id="alertMsg" variant="outlined" severity="info">
+                  <div>Total: <strong>{todos.filter(todo => todo).length}</strong></div>
                 </Alert>
               </Stack>
 

@@ -38,7 +38,13 @@ $breakpoints: (phone: 640px,
                desktop: 1024px) !default;
 
 @include media(">phone", "<tablet") {
+  html, body {
+    scale: 0.9;
+  }
 }
 
 @include media(">tablet", "<950px") {
+  html, body {
+    scale: 1.0;
+  }
 }

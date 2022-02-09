@@ -16,7 +16,9 @@ export default function MyApp(props) {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
+        <title>ToDo - Mohamed Shez</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <link rel="apple-touch-icon" href="public/logopng.png" />
       </Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}

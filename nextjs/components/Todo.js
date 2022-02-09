@@ -4,10 +4,11 @@ import Checkbox from '@mui/material/Checkbox';
 import TextField  from '@mui/material/TextField';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import EditIcon from '@mui/icons-material/Edit';
+//import EditIcon from '@mui/icons-material/Edit';
 import Tooltip from '@mui/material/Tooltip';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import SaveIcon from '@mui/icons-material/Save';
+//import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const LOCAL_STORAGE = 'todo.list.app2'
 
@@ -92,17 +93,16 @@ export default function Todo({ todo, toggleTodo }) {
             //multiline={true}
             inputRef={todoNameRef}
             //onChange={(e) => savedEdit(e.target.value)}
-            onClick={() => handleTodoClick()}
+            onClick={(e) => handleTodoClick(e)}
             style={{
               textDecoration: todo.complete ? 'line-through' : '' 
             }}
           />
         </Tooltip>
-        {/* */}
         <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-        <Tooltip title="Edit" placement="right">
+        <Tooltip title="Save" placement="bottom">
           <IconButton onClick={(e) => savedEdit(e.target.value)} color="default" sx={{ p: '10px' }} aria-label="directions">
-            <EditIcon />
+            <SaveIcon />
           </IconButton>
         </Tooltip>
         
