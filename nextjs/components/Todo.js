@@ -73,6 +73,7 @@ export default function Todo({ todo, toggleTodo }) {
             type="checkbox"
             checked={todo.complete} 
             onChange={handleTodoClick}
+            //onClick={(e) => handleTodoClick(e)}
             sx={{ '& .MuiSvgIcon-root': { fontSize: 24 } }}
             inputProps={{ 'aria-labelledby': labelId }}
             color="success"
@@ -93,7 +94,6 @@ export default function Todo({ todo, toggleTodo }) {
             //multiline={true}
             inputRef={todoNameRef}
             //onChange={(e) => savedEdit(e.target.value)}
-            onClick={(e) => handleTodoClick(e)}
             style={{
               textDecoration: todo.complete ? 'line-through' : '' 
             }}
