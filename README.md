@@ -1,4 +1,4 @@
-## [ToDo App Tech Test](https://github.com/shez1461) TODO App Tech Test
+## [ToDo App Tech Test](https://github.com/shez1461)
 Inspired & referred from various todo demos online & tutorials.
 
 <img src="https://github.com/shez1461/todo-app-nextjs/blob/main/nextjs/public/Screenshot1.png" width="300" height="300" />
