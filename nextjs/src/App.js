@@ -43,7 +43,6 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE, JSON.stringify(todos))
   }, [todos])
 
-
   // Handle Enter Key
   const handleEnterKey = (e) => {
     if (e.key === 'Enter') {
@@ -90,7 +89,7 @@ function App() {
     <Grid container sx={{ paddingTop: 2, paddingBottom: '100%', flexGrow: 1, overflow: 'hidden', bgcolor: 'background.default', border: '1px round background.default' }}>
       <Box sx={{ height: 'auto', flexGrow: 1, overflow: 'hidden', bgcolor: 'background.default', border: '1px round background.default' }}>
         <Paper sx={{ bgcolor: 'background.default', maxWidth: "90%", my: 2, mx: 'auto', p: 2 }}>
-          <Grid container wrap="nowrap" spacing={2} maxWidth="100%">
+          <Grid container wrap="nowrap" spacing={2} width="100%" maxWidth="100%">
             <Box
               component="form"
               sx={{
@@ -126,8 +125,21 @@ function App() {
 
               {/* Header H1/H4 */}
               <Typography variant="h4" component="h1" gutterBottom>
-                To Do
+                Tasks To Do
               </Typography>
+
+              {/* Alert tally - Incomplete/Pending tasks todo */}
+              <Stack sx={{ width: '100%' }} spacing={2}>
+                <Alert id="alertMsg" variant="outlined" severity="success">
+                  <div>Completed: <strong>{todos.filter(todo => todo.complete).length}</strong></div>
+                </Alert>
+                <Alert id="alertMsg" variant="outlined" severity="warning">
+                  <div>Incomplete: <strong>{todos.filter(todo => !todo.complete).length}</strong></div>
+                </Alert>
+                <Alert id="alertMsg" variant="outlined" severity="info">
+                  <div>Total: <strong>{todos.filter(todo => todo).length}</strong></div>
+                </Alert>
+              </Stack>
 
               <Paper
                 sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: '100%' }}
@@ -181,19 +193,6 @@ function App() {
                 <Button color="warning" size="large" onClick={handleDeleteTodos} variant="outlined">Delete</Button>
               </Stack>
               */}
-
-              {/* Alert tally - Incomplete/Pending tasks todo */}
-              <Stack sx={{ width: '100%' }} spacing={2}>
-                <Alert id="alertMsg" variant="outlined" severity="success">
-                  <div>Completed: <strong>{todos.filter(todo => todo.complete).length}</strong></div>
-                </Alert>
-                <Alert id="alertMsg" variant="outlined" severity="warning">
-                  <div>Incomplete: <strong>{todos.filter(todo => !todo.complete).length}</strong></div>
-                </Alert>
-                <Alert id="alertMsg" variant="outlined" severity="info">
-                  <div>Total: <strong>{todos.filter(todo => todo).length}</strong></div>
-                </Alert>
-              </Stack>
 
               {/* User Tip 
               <ProTip />
