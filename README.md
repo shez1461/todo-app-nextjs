@@ -5,7 +5,9 @@ Inspired & referred from various todo demos online & tutorials.
 <img src="https://github.com/shez1461/todo-app-nextjs/blob/main/nextjs/public/screenshot2.png" width="300" height="300" />
 
 ## Live App Demo
-- AWS - [Live Demo Hosted on AWS Instance](http://18.169.158.177:8080/)
+- AWS - [Hosted on AWS as Micro EC2 Instance](http://18.169.158.177:8080/)
+- Firebase - [Hosted on Google](https://www.shez.app/)
+- Vercel - [Deployed on Vercel](https://todo-app-nextjs-using.vercel.app/)
 
 ## Features
 **Task Module**
