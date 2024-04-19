@@ -16,9 +16,6 @@ import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import BasicMenu from "../pages/BasicMenu";
-//import useDarkMode from '../hooks/useDarkMode';
-//import useLocalStorage from "../hooks/useLocalStorage";
-//import useDarkMode from '../hooks/use-dark-mode';
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 const LOCAL_STORAGE = "todo.list.app";
@@ -165,7 +162,7 @@ export const App = () => {
                 </Tooltip>
               </Box>
 
-              {/*<BasicMeta />*/}
+              {/* BasicMenu - Component from Material UI by Google */}
               <BasicMenu />
 
               {/* Header H1/H4 */}
@@ -216,7 +213,6 @@ export const App = () => {
                   fullWidth
                   inputRef={todoNameRef}
                   onKeyDown={handleEnterKey}
-                  //multiline={true}
                 />
                 {/* Icons */}
                 <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
@@ -261,7 +257,6 @@ export const App = () => {
                 }}
                 todos={todos}
                 toggleTodo={toggleTodo}
-                //saveEdit={saveEdit}
               />
 
               <Footer />
