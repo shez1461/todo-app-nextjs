@@ -1,7 +1,7 @@
-import * as React from 'react';
-import Link from '@mui/material/Link';
-import SvgIcon from '@mui/material/SvgIcon';
-import Typography from '@mui/material/Typography';
+import * as React from "react";
+import Link from "@mui/material/Link";
+import SvgIcon from "@mui/material/SvgIcon";
+import Typography from "@mui/material/Typography";
 
 function LightBulbIcon(props) {
   return (
@@ -14,7 +14,7 @@ function LightBulbIcon(props) {
 export default function ProTip() {
   return (
     <Typography sx={{ mt: 6, mb: 3 }} color="text.secondary">
-      <LightBulbIcon sx={{ mr: 1, verticalAlign: 'middle' }} />
+      <LightBulbIcon sx={{ mr: 1, verticalAlign: "middle" }} />
       Enter text below to add, edit or delete a task.
     </Typography>
   );

@@ -21,7 +21,7 @@ function useDarkMode() {
         element.classList.remove(className);
       }
     },
-    [enabled] // Only re-call effect when value changes
+    [enabled], // Only re-call effect when value changes
   );
   // Return enabled state and setter
   return [enabled, setEnabledState];
