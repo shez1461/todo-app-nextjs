@@ -15,6 +15,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import BasicMenu from "../pages/BasicMenu";
 //import useDarkMode from '../hooks/useDarkMode';
 //import useLocalStorage from "../hooks/useLocalStorage";
 //import useDarkMode from '../hooks/use-dark-mode';
@@ -22,13 +23,11 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 const LOCAL_STORAGE = 'todo.list.app'
 
-function App() {
+export const App = () => {
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext)
   const [todos, setTodos] = useState([])
   const todoNameRef = useRef()
-  //const darkMode = useDarkMode(initialState, darkModeConfig);
-  //const [darkMode, setDarkMode] = useDarkMode();
 
   // Get Item in browser LocalStorage
   useEffect(() => {
@@ -113,7 +112,6 @@ function App() {
                   borderRadius: 1,
                   p: 1,
                 }}
-                //onClick={handleThemeChange}
               >
                 {theme.palette.mode} mode
                 <Tooltip title="Appearance" placement="bottom">
@@ -123,9 +121,12 @@ function App() {
                 </Tooltip>
               </Box>
 
+              {/*<BasicMeta />*/}
+              <BasicMenu />
+
               {/* Header H1/H4 */}
               <Typography variant="h4" component="h1" gutterBottom>
-                Tasks To Do
+                Tasks List
               </Typography>
 
               {/* Alert tally - Incomplete/Pending tasks todo */}
@@ -186,18 +187,6 @@ function App() {
                 //saveEdit={saveEdit}
               />
 
-              {/* Buttons
-              <Stack direction="row" align="center" spacing={2}>
-                <Button color="success" size="large" variant="contained">Add</Button>
-                <Button color="primary" size="large" onClick={handleEditTodo} variant="outlined" disabled>Edit</Button>
-                <Button color="warning" size="large" onClick={handleDeleteTodos} variant="outlined">Delete</Button>
-              </Stack>
-              */}
-
-              {/* User Tip 
-              <ProTip />
-              */}
-
               <Footer/>
 
             </Box>
@@ -237,5 +226,3 @@ export default function ToggleColorMode() {
     </ColorModeContext.Provider>
   );
 }
-
-//export default App;
