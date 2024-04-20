@@ -6,7 +6,7 @@ Inspired & referred from various todo demos online & tutorials.
 
 ## Live App Demo
 - ~~AWS - [Hosted on AWS as Micro EC2 Instance](http://18.169.158.177:8080/)~~
-- Firebase - [Hosted on Google](https://www.shez.app/)
+~~- Firebase - [Hosted on Google](https://www.shez.app/)~~
 - Vercel - [Deployed on Vercel](https://todo-app-nextjs-using.vercel.app/)
 
 ## Features
