@@ -4,6 +4,7 @@ import Head from "next/head";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { CacheProvider } from "@emotion/react";
+import { Analytics } from "@vercel/analytics/next";
 import theme from "../src/theme";
 import createEmotionCache from "../src/createEmotionCache";
 
@@ -24,6 +25,7 @@ export default function MyApp(props) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Component {...pageProps} />
+        <Analytics />
       </ThemeProvider>
     </CacheProvider>
   );
