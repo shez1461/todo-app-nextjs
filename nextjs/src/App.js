@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import TodoList from "../components/TodoList";
 import { v4 as uuidv4 } from "uuid";
 import Footer from "../components/Footer";
@@ -12,9 +12,9 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Tooltip from "@mui/material/Tooltip";
+import Switch from "@mui/material/Switch";
 import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import BasicMenu from "../pages/BasicMenu";
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
@@ -42,7 +42,7 @@ export const App = () => {
   // Handle Enter Key
   const handleEnterKey = (e) => {
     if (e.key === "Enter") {
-      handleAddTodo(e);
+      handleAddTodo();
     }
   };
 
@@ -55,7 +55,7 @@ export const App = () => {
   }
 
   // Handle Add Todo
-  function handleAddTodo(e) {
+  function handleAddTodo() {
     const name = todoNameRef.current.value;
     if (name === "") {
       return;
@@ -140,26 +140,22 @@ export const App = () => {
                   maxWidth: "100%",
                   alignItems: "center",
                   justifyContent: "right",
+                  gap: 1,
                   bgcolor: "background.primary",
                   color: "text.primary",
                   borderRadius: 1,
                   p: 1,
                 }}
               >
-                {theme.palette.mode} mode
+                <Typography variant="body2">Light</Typography>
                 <Tooltip title="Appearance" placement="bottom">
-                  <IconButton
-                    sx={{ ml: 1 }}
-                    onClick={colorMode.toggleColorMode}
-                    color="inherit"
-                  >
-                    {theme.palette.mode === "dark" ? (
-                      <Brightness7Icon />
-                    ) : (
-                      <Brightness4Icon />
-                    )}
-                  </IconButton>
+                  <Switch
+                    checked={theme.palette.mode === "dark"}
+                    onChange={colorMode.toggleColorMode}
+                    inputProps={{ "aria-label": "Toggle light and dark mode" }}
+                  />
                 </Tooltip>
+                <Typography variant="body2">Dark</Typography>
               </Box>
 
               {/* BasicMenu - Component from Material UI by Google */}
@@ -269,7 +265,16 @@ export const App = () => {
 };
 
 export default function ToggleColorMode() {
-  const [mode, setMode] = React.useState("light");
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const [mode, setMode] = React.useState(
+    prefersDarkMode ? "dark" : "light",
+  );
+
+  // Follow OS theme changes (macOS/Windows) automatically.
+  React.useEffect(() => {
+    setMode(prefersDarkMode ? "dark" : "light");
+  }, [prefersDarkMode]);
+
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
