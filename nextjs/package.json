@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:version": "node scripts/set-app-version.js .env.local && next dev",
     "build": "next build",
+    "build:version": "node scripts/set-app-version.js .env.production && next build",
     "start": "next start",
     "lint": "next lint",
     "prettier:check": "prettier --check .",
