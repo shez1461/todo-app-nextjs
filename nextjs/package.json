@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:version": "node scripts/set-app-version.js .env.local && next dev",
+    "prebuild": "node scripts/set-app-version.js .env.production",
     "build": "next build",
     "build:version": "node scripts/set-app-version.js .env.production && next build",
     "start": "next start",
